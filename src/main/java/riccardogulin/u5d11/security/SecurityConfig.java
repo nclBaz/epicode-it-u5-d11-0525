@@ -1,12 +1,14 @@
 package riccardogulin.u5d11.security;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
-// @Configuration
-// @EnableWebSecurity // Questa non sarà una classe di configurazione qualsiasi ma sarà una apposita per Spring Security
+@Configuration
+@EnableWebSecurity // Questa non sarà una classe di configurazione qualsiasi ma sarà una apposita per Spring Security
 public class SecurityConfig {
 
 	@Bean

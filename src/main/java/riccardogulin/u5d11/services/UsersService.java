@@ -96,6 +96,11 @@ public class UsersService {
 		this.usersRepository.delete(found);
 	}
 
+	public User findByEmail(String email) {
+		return this.usersRepository.findByEmail(email)
+				.orElseThrow(() -> new NotFoundException("L'utente con email " + email + " non è stato trovato!"));
+	}
+
 //	public String uploadAvatar(MultipartFile file) {
 //		// 1. Controlli (es. dimensione non può superare tot, oppure tipologia file solo .gif...)
 //		// 2. Find by id dell'utente...
