@@ -3,16 +3,11 @@ package riccardogulin.u5d11.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import riccardogulin.u5d11.entities.User;
-import riccardogulin.u5d11.exceptions.ValidationException;
-import riccardogulin.u5d11.payloads.UserDTO;
 import riccardogulin.u5d11.payloads.UserPayload;
 import riccardogulin.u5d11.services.UsersService;
 
-import java.util.List;
 import java.util.UUID;
 
 /*
@@ -36,29 +31,30 @@ public class UsersController {
 	}
 
 	// 1. POST http://localhost:3001/users (+ Payload)
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public User createUser(@RequestBody @Validated UserDTO payload, BindingResult validationResult) {
-		// @Validated serve per attivare la validazione, se non lo usiamo è come non farla
-
-		if (validationResult.hasErrors()) {
-
-//			String errors = validationResult.getFieldErrors().stream()
-//					.map(fieldError -> fieldError.getDefaultMessage())
-//					.collect(Collectors.joining(". "));
+//	@PostMapping
+//	@ResponseStatus(HttpStatus.CREATED)
+//	public User createUser(@RequestBody @Validated UserDTO payload, BindingResult validationResult) {
+//		// @Validated serve per attivare la validazione, se non lo usiamo è come non farla
 //
-//			throw new ValidationException(errors);
-			List<String> errorsList = validationResult.getFieldErrors()
-					.stream()
-					.map(fieldError -> fieldError.getDefaultMessage())
-					.toList();
+//		if (validationResult.hasErrors()) {
+//
 
-			throw new ValidationException(errorsList);
-		} else {
-			return this.usersService.save(payload);
-		}
-
-	}
+	/// /			String errors = validationResult.getFieldErrors().stream()
+	/// /					.map(fieldError -> fieldError.getDefaultMessage())
+	/// /					.collect(Collectors.joining(". "));
+	/// /
+	/// /			throw new ValidationException(errors);
+//			List<String> errorsList = validationResult.getFieldErrors()
+//					.stream()
+//					.map(fieldError -> fieldError.getDefaultMessage())
+//					.toList();
+//
+//			throw new ValidationException(errorsList);
+//		} else {
+//			return this.usersService.save(payload);
+//		}
+//
+//	}
 
 	// 2. GET http://localhost:3001/users
 	@GetMapping
